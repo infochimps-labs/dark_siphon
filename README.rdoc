@@ -4,7 +4,7 @@ The Dark Siphon is a simple Goliath app which allows you to duplicate
 a fraction of your live traffic from your production app to a test
 environment.
 
-Tools like nginx and so on allow you to **load balance** requests
+Tools like nginx and so on allow you to <b>load balance</b> requests
 between multiple servers but they don't let you *duplicate* a given
 event across two different backend servers.
 
