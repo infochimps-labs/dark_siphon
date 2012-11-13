@@ -1,0 +1,26 @@
+= Dark Siphon
+
+The Dark Siphon is a simple Goliath app which allows you to duplicate
+a fraction of your live traffic from your production app to a test
+environment.
+
+Tools like nginx and so on allow you to *load balance* requests
+between multiple servers but they don't let you *duplicate* a given
+event across two different backend servers.
+
+Dark Siphon lets you do this simply:
+
+ $ ruby dark_siphon.rb --mainline=http://production.myapp.com --duplicate=http://test.myapp.com
+
+This will spin up a Goliath::API listener on port 9000 which will send
+every request to http://production.myapp.com and return the response
+and will silently send 10% of events to http://test.myapp.com,
+ignoring the response.
+
+The production app will continue to receive and respond to all
+requests while the test app will receive 10% of the *real* production
+traffic.
+
+Try running `dark_siphon.rb --help' to see other options (both
+built-in to Goliath as well as special to Dark Siphon like
+`--fraction').
